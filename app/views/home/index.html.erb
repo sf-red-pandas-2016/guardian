@@ -4,6 +4,8 @@
   <%= link_to 'Register', new_user_registration_path %>
   <%= link_to 'Login', new_user_session_path %>
 
+
 <% else %>
-    <%= button_to "Walk Me Home", new_events_path %>
+  <%= link_to image_tag("walk-me-home-btn.png", :class => '#') %>
+
 <% end %>
