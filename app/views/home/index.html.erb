@@ -1,0 +1,9 @@
+<h1>Hello Guardian</h1>
+
+<% if !current_user %>
+  <%= link_to 'Register', new_user_registration_path %>
+  <%= link_to 'Login', new_user_session_path %>
+
+<% else %>
+    <%= button_to "Walk Me Home", new_events_path %>
+<% end %>
