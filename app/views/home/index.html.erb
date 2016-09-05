@@ -5,6 +5,9 @@
   <%= link_to 'Login', new_user_session_path %>
   
 
+
 <% else %>
-    <%= button_to "Walk Me Home", new_event_path, method: :get %>
+
+  <%= link_to image_tag("walk-me-home-btn.png", :class => '#') %>
+
 <% end %>
