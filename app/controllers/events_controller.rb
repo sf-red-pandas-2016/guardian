@@ -12,7 +12,7 @@ class EventsController < ApplicationController
 
 		# To include drone_id in event
 		# if current_user.drones.length == 1
-		# 	drone = Drone.find_by user_id: current_user.id
+			# drone = Drone.find_by user_id: current_user.id
 		# 	@event.drone_id = drone.id
 		# elsif current_user.drones.length > 1
 		# 	Drone.where(user_id: current_user.id)
@@ -21,16 +21,24 @@ class EventsController < ApplicationController
 		# 	error_message = "Set up a guardian to follow you home"
 		# end
 
-		# create new event
-		# Does assigning of video address happen here or is it, more likely, updated later
-		# send text message to friend which includes link for friend to watch livestream/video and location data
-		# get location data from phone (add to event table)
-		# trigger drone ToDo auto ToDo list
 
 		if @event.save
+			# get location data from phone (add to event table)
+			# send text message to friend which includes link for friend to watch livestream/video and location data
+
+			# We'll get back a url to include text msg
+
 		# on successful event initialization,
 			if request.xhr?
-				redirect_to '/events/edit'
+				# json ping back to change view
+
+				# magical method to make drone start
+				'http://172.168.1.1/start'
+
+
+				# Does assigning of video address happen here or is it, more likely, updated later?
+				# trigger drone ToDo auto ToDo list
+				data.to_json
 			else
 			end
 		else

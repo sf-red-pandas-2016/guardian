@@ -3,32 +3,33 @@ $(document).ready(function(){
   // var turbolinks = require('turbolinks')
 
   $("#walk-me-home").on("click", function(e){
-    console.log("In walk-me-home")
     e.preventDefault();
-
-    // var wnd = window.open("http://172.16.51.60:3000/start", "_blank" );
-    // wnd.close()
 
     $.ajax({
       url: "http://172.16.50.232:8080/start",
       crossDomain : true,
     })
-
     .done(function(serverResponse){
-      
-        console.log(serverResponse + "This is the server response");
+      $("#walk-me-home").hide();
+      $("#home-safely").show();
+      console.log(serverResponse + "This is the server response");
     })
-  //
-  // var xhr = new XMLHttpRequest();
-  // xhr.open("get", "http://172.16.50.232:8080/test", true);
-  // xhr.onload = function(){  //instead of onreadystatechange
-  //   //do something
-  //   console.log("Did we get anything back??")
-  // };
-  // xhr.send(null);
+  // need to add failure response
   })
 
-
-
+  $("#home-safely").on("click", function(e){
+    console.log("I'm home!!")
+    e.preventDefault();
+    $.ajax({
+      url: "http://172.16.50.232:8080/end",
+      crossDomain : true,
+    })
+    .done(function(serverResponse){
+      $("#home-safely").hide();
+      $("#show-events").show();
+      console.log(serverResponse + "This is the server response");
+    
+    })
+  })
 
 });
