@@ -44,7 +44,6 @@ $(document).ready(function(){
     })
     .done(function(serverResponse){
       $("#home-safely").hide();
-      $("#show-events").show();
       console.log(serverResponse + " -- This is the stop-drone server response");
     })
     $.ajax({
@@ -55,6 +54,13 @@ $(document).ready(function(){
     })
     .fail(function(serverResponse){
       console.log("Request failed");
+    })
+    $.ajax({
+      url: "/events"
+    })
+    .done(function(serverResponse){
+      console.log(serverResponse)
+      $("#show-events").append(serverResponse).show();
     })
     // need to add failure response
 

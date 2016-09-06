@@ -34,7 +34,8 @@ class SmsController < ApplicationController
 	    		from: '+16502156875',
 	     		body: message
 	    	)
-	    	flash[:notice] = "Message has been sent!"
+	    	flash[:notice] = "Text message to your friend has been sent!"
+				@events = @user.events
 	  	else
 	    	flash[:notice] = "Error: Message did not send"
 	  	end

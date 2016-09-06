@@ -1,7 +1,7 @@
 
 <% if user_signed_in? %>
   <div id="walk-me-home">
-      <%= link_to image_tag("walk-me-home-btn.png") %>
+      <%= link_to image_tag("walk-me-home-btn.png"), remote: true  %>
   </div>
 <% else %>
   <div>
@@ -15,5 +15,5 @@
 </div>
 
 <div id="show-events">
-  <%= link_to image_tag("i-am-home.png") %>
+
 </div>
