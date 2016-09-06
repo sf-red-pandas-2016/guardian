@@ -1,5 +1,22 @@
-<h1>Event's Show Page</h1>
-
-- video player
+<!-- - video player
 - location (ideally translated from coordinates to street address)
-- user's name and contact info
+- user's name and contact info -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<h1><%= "#{@user.first_name + " " + @user.last_name}" %></h1>
+
+
+<div>
+  <ul>
+  	<li>Phone: <%= @user.phone_number %></li>
+  	<li>Location: </li>
+  </ul>
+</div>
+
+	<iframe height="300px" width="600px" src="http://www.w3schools.com" name="iframe_a"></iframe>
+
+	
+
+</html>
