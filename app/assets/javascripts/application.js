@@ -36,13 +36,15 @@ $(document).ready(function(){
   // need to add failure response
   })
 
-  $("#home-safely img").on("click", function(e){
+  $("#home-safely").on("click", function(e){
     e.preventDefault();
     $.ajax({
       url: "http://172.16.50.232:8080/end",
       crossDomain : true,
     })
     .done(function(serverResponse){
+      $("#home-safely").hide();
+      $("#show-events").show();
       console.log(serverResponse + " -- This is the stop-drone server response");
     })
     $.ajax({
@@ -50,8 +52,6 @@ $(document).ready(function(){
     })
     .done(function(serverResponse){
       console.log(serverResponse + " -- This is the text-once-home server response");
-      $(this).hide();
-      $("#show-events").show();
     })
     .fail(function(serverResponse){
       console.log("Request failed");
