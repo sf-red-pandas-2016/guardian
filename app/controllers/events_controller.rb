@@ -1,6 +1,8 @@
 class EventsController < ApplicationController
 
-
+def test
+	"In the test route"
+end
 	def index
 		@events = current_user.events
 	end
