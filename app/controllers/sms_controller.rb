@@ -14,8 +14,9 @@ class SmsController < ApplicationController
 	  	)
 
 	  	if client.messages.create(
-	    		to: to.phone_number,
-	    		from: @user.phone_number,
+	    		to to.phone_number,
+
+	    		from: '+16502156875',
 	     		body: message
 	    	)
 
@@ -23,8 +24,7 @@ class SmsController < ApplicationController
 	  	else
 	    	flash[:notice] = "Error: Message did not send"
 	  	end
-	  	
-	  	redirect '/dashboard'
+
 	end
- 
 end
+
