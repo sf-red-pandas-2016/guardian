@@ -55,6 +55,10 @@ class EventsController < ApplicationController
 		edit_event_path
 	end
 
+	def show
+		@event = Event.find(params[:id])
+	end
+
 	def update
 		# assign:
 			# event.permanent_url
