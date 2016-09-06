@@ -9,7 +9,7 @@ $(document).ready(function(){
          url: "/sms/text_friend"
        })
        .done(function(serverResponse){
-         console.log(serverResponse + " This is the server response");
+         console.log(serverResponse + " This is the post-send-text server response");
        })
        .fail(function(serverResponse){
          console.log("Request failed");
@@ -21,7 +21,7 @@ $(document).ready(function(){
     .done(function(serverResponse){
       $("#walk-me-home").hide();
       $("#home-safely").show();
-      console.log(serverResponse + "This is the server response");
+      console.log(serverResponse + "This is the start-drone server response");
     })
   // need to add failure response
   })
@@ -36,9 +36,19 @@ $(document).ready(function(){
     .done(function(serverResponse){
       $("#home-safely").hide();
       $("#show-events").show();
-      console.log(serverResponse + "This is the server response");
-
+      console.log(serverResponse + "This is the stop-drone server response");
     })
+    $.ajax({
+      url: "/sms/text_friend_once_home"
+    })
+    .done(function(serverResponse){
+      console.log(serverResponse + " This is the text-once-home server response");
+    })
+    .fail(function(serverResponse){
+      console.log("Request failed");
+    })
+    // need to add failure response
+
   })
 
 });
