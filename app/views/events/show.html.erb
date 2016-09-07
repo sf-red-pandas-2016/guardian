@@ -1,20 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<h1><%= "#{@user.first_name + " " + @user.last_name}" %></h1>
+	<h1><%= "#{@user.first_name + " " + @user.last_name}" %></h1>
 
 
-<div id=user_info>
-  <ul>
-  	<li>Phone: <%= @user.phone_number %></li>
-  	<li>Location: </li>
-  </ul>
-</div>
+	<div id=user_info>
+	  <ul>
+	  	<li>Phone: <%= @user.phone_number %></li>
+	  	<li>Location: </li>
+	  </ul>
+	</div>
 
-<div id=stream>
-	<iframe height="360px" width="640px" src="http://172.16.51.60:3000/feed" name="iframe_a"></iframe>
-</div>
+	<div id=stream>
+		<iframe height="360px" width="640px" src="http://172.16.51.60:3000/feed" name="iframe_a"></iframe>
+	</div>
 
+  <div id="map" style="width:640px;height:360px;"></div>
+
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 15
+        });
+      }
+      var marker=new google.maps.Marker({
+  			position:myCenter,
+  			});
+
+			marker.setMap(map);
+
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAy-vo2nS3tMm9kiAE3GXSt8bU3VFOm-c4&callback=initMap"
+    async defer></script>
 
 </html>
 
