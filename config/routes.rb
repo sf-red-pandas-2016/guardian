@@ -8,10 +8,11 @@ Rails.application.routes.draw do
   root "home#index"
 
   resources :events
+  resources :users
 
   get '/sms/text_friend' => 'sms#text_friend'
   get '/sms/text_friend_once_home' => 'sms#text_friend_once_home'
 
-  get 'events/show' => 'event#show' 
+  get 'events/show' => 'event#show'
 
 end
