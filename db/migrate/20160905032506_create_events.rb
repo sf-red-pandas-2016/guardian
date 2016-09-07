@@ -3,8 +3,10 @@ class CreateEvents < ActiveRecord::Migration[5.0]
     create_table :events do |t|
       t.string :temp_url
       t.string :permanent_url
+      t.string :place_id, foreign_key: false
       t.references :drone, foreign_key: true
       t.references :user, foreign_key: true
+      t.references :friend, foreign_key: true
 
       t.timestamps
     end
