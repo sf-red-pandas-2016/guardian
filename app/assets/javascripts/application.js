@@ -6,6 +6,7 @@ $(document).ready(function(){
     e.preventDefault();
 
     $.ajax({
+
          url: "/sms/text_friend"
        })
        .done(function(serverResponse){
@@ -14,6 +15,8 @@ $(document).ready(function(){
        .fail(function(serverResponse){
          console.log("Request failed");
        })
+
+
      $.ajax({
           url: "/events",
           method: "POST"
@@ -24,6 +27,7 @@ $(document).ready(function(){
         .fail(function(serverResponse){
           console.log("New event creation failed");
         })
+
     $.ajax({
       // Jason's server
       // url: "http://172.16.51.60:3000/start",
