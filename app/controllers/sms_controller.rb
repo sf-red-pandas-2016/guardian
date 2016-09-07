@@ -10,6 +10,7 @@ class SmsController < ApplicationController
 	    	ENV["TWILIO_AUTH_TOKEN"]
 	  	)
 	  	if client.messages.create(
+
 	    		to: to.phone_number,
 	    		from: current_user.phone_number,
 	     		body: message
@@ -41,3 +42,4 @@ class SmsController < ApplicationController
 	  	end
 	end
 end
+

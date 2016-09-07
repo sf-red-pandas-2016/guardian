@@ -1,6 +1,7 @@
 <h1>All my events</h1>
 
 <ul>
+
   <% @events.each do |event| %>
   <% date = event.created_at %>
   <% formatted_date = date.strftime("%a %B %d") %>
