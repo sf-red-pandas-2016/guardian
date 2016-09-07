@@ -1,4 +1,17 @@
-<h1>Details</h1>
+<div id="top-bar">
+</div>
 
-- location (ideally translated from coordinates to street address)<br>
-- link to saved video file<br>
+<div id="main-content">
+  <div>
+    <%= @friend.first_name + " " + @friend.last_name + " " %>walked you home.
+  </div>
+  <div id="replay">
+    <iframe height="360px" width="640px" src="http://172.16.51.60:3000" name="iframe_a"></iframe>
+  </div>
+  <div>
+    placeholder for map
+  </div>
+</div>
+
+<div id="bottom-bar">
+</div>
