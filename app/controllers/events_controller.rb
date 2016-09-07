@@ -47,8 +47,8 @@ class EventsController < ApplicationController
 	def show
 		@event = Event.find(params[:id])
 		@user = User.find(@event.user.id)
+		@friend = Friend.find(@user.friend.id)
 		event_path
-
 	end
 
 	def update

@@ -1,19 +1,19 @@
-
-<% if user_signed_in? %>
-  <div id="walk-me-home">
-      <%= link_to image_tag("walk-me-home-btn.png"), remote: true  %>
-  </div>
-<% else %>
-  <div>
-    <h1>Welcome</h1>
-    Please <%= link_to 'login', new_user_session_path %> or <%= link_to 'register', new_user_registration_path %>.
-  </div>
-<% end %>
-
-<div id="home-safely">
-  <%= link_to image_tag("i-am-home.png") %>
+<div id="top-bar">
 </div>
 
-<div id="show-events">
+<div id="main-content">
+  <div>
+    <div id="logo-image">
+    </div>
+    <div>
+      <h1>Guardian</h1>
+    </div>
+  </div>
+  <div>
+    <%= link_to 'register', new_user_registration_path %>
+    <%= link_to 'login', new_user_session_path %>
+  </div>
+</div>
 
+<div id="bottom-bar">
 </div>
