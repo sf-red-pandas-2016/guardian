@@ -1,4 +1,20 @@
-<h1>Details</h1>
+<!DOCTYPE html>
+<html lang="en">
 
-- location (ideally translated from coordinates to street address)<br>
-- link to saved video file<br>
+<h1><%= "#{@user.first_name + " " + @user.last_name}" %></h1>
+
+
+<div id=user_info>
+  <ul>
+  	<li>Phone: <%= @user.phone_number %></li>
+  	<li>Location: </li>
+  </ul>
+</div>
+
+<div id=stream>
+	<iframe height="360px" width="640px" src="http://172.16.51.60:3000/feed" name="iframe_a"></iframe>
+</div>
+
+
+</html>
+
