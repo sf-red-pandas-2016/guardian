@@ -11,5 +11,6 @@ Rails.application.routes.draw do
 
   get '/sms/text_friend' => 'sms#text_friend'
 
+  get 'events/show' => 'event#show' 
 
 end
