@@ -25,6 +25,9 @@ $(document).ready(function(){
           console.log("New event creation failed");
         })
     $.ajax({
+      // Jason's server
+      // url: "http://172.16.51.60:3000/start",
+      // Eric's server
       url: "http://172.16.50.232:8080/start",
       crossDomain : true,
     })
@@ -39,6 +42,9 @@ $(document).ready(function(){
   $("#home-safely").on("click", function(e){
     e.preventDefault();
     $.ajax({
+      // Jason's server
+      // url: "http://172.16.51.60:3000/start",
+      // Eric's server
       url: "http://172.16.50.232:8080/end",
       crossDomain : true,
     })
