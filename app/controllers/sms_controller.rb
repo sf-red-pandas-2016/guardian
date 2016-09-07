@@ -2,7 +2,7 @@ class SmsController < ApplicationController
 
 	def text_friend
 		@user = current_user
-		message = "This is " + current_user.first_name + " " + current_user.last_name + "Thanks for watching that I get home safely! Link to watch: http://localhost:3000/events/#"
+		message = "This is " + @user.first_name + " " + @user.last_name + ". Thanks for watching that I get home safely! Link to watch: http://localhost:3000/events/"
 
 	 	to = @user.friends.first
 	 	client = Twilio::REST::Client.new(
@@ -12,7 +12,7 @@ class SmsController < ApplicationController
 	  	if client.messages.create(
 
 	    		to: to.phone_number,
-	    		from: current_user.phone_number,
+	    		from: @user.phone_number,
 	     		body: message
 	    	)
 	    	flash[:notice] = "Message has been sent!"
@@ -32,7 +32,7 @@ class SmsController < ApplicationController
 	  	)
 	  	if client.messages.create(
 	    		to: to.phone_number,
-	    		from: current_user.phone_number,
+	    		from: @user.phone_number,
 	     		body: message
 	    	)
 	    	flash[:notice] = "Text message to your friend has been sent!"
@@ -42,4 +42,3 @@ class SmsController < ApplicationController
 	  	end
 	end
 end
-
