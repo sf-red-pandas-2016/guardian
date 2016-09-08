@@ -3,28 +3,26 @@
 </div>
 
 <div id="main-content">
-  <div id="search-bar">
-    <input id="pac-input" class="controls" type="text" placeholder="Enter your location">
+  <div class=location-input id=shown-div>
+    <div id="search-bar">
+      <input id="pac-input" class="controls" type="text" placeholder="Enter your location">
+    </div>
   </div>
 
-  <div id=shown-div class=walk-me-home>
+  <div id=hidden-div class=walk-me-home>
     Walk me home
-  </div>
-  <div class="location-search" id=shown-div>
-    placeholder for location bar
   </div>
 </div>
 
 <div id="bottom-bar">
   <div class=bottom-menu>
-    <%= link_to "*Friends*", friends_path %>
-    <!-- add link tag to contacts -->
+    <%= link_to "Friends", friends_path %>
     <div class=bottom-separator></div>
-    <%= link_to "*Events*", events_path %>
+    <%= link_to "Events", events_path %>
   </div>
 </div>
 
-    <style>
+<!--     <style>
       html, body {
         height: 100%;
         margin: 0;
@@ -77,7 +75,7 @@
       #target {
         width: 345px;
       }
-    </style>
+    </style> -->
 
 
     <script>
@@ -107,6 +105,10 @@
             })
             .done(function(serverResponse){
               $('#pac-input').hide()
+              $('.location-input').removeAttr('id')
+              $('.walk-me-home').removeAttr('id')
+              $('.location-input').attr('id', 'hidden-div')
+              $('.walk-me-home').attr('id', 'shown-div')
               console.log(serverResponse + " -- This is the event-created server response");
             })
             .fail(function(serverResponse){
