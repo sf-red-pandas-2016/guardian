@@ -13,7 +13,7 @@ class EventsController < ApplicationController
 		if @event.save
 			# get location data from phone (add to event table)
 			if request.xhr?
-				@event.update(placeid: params["place_id"])
+				@event.update(place_id: params["place_id"])
 			else
 			end
 		else
@@ -35,7 +35,7 @@ class EventsController < ApplicationController
 
 		#friend variable will need to be updated
 		@friend = Friend.find(@user.friends.first.id)
-		
+
 		event_path
 	end
 

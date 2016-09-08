@@ -1,33 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
+
 <div id="top-bar">
-<h1><%= "#{@user.first_name + " " + @user.last_name}" %></h1>
+  <h1><%= "#{@user.first_name + " " + @user.last_name}" %></h1>
 </div>
 
-<div id="main-content">
-  
+
+
+<div id="main-content"> 
   <div id=user_info>
     <ul>
       <li>Phone: <%= @user.phone_number %></li>
-      <li>Location: </li>
+      <li>Location: <%= @event.place_id %></li>
     </ul>
   </div>
+
+
 
   <div id=stream>
     <iframe height="360px" width="640px" src="http://172.16.51.60:3000/feed" name="iframe_a"></iframe>
   </div>
 
+<iframe
+  width="600"
+  height="450"
+  frameborder="0" style="border:0"
+  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAy-vo2nS3tMm9kiAE3GXSt8bU3VFOm-c4&q=place_id:<%= @event.place_id %>" allowfullscreen>
+</iframe>
+
   <div>
     <%= @friend.first_name + " " + @friend.last_name + " " %>walked you home.
   </div>
 
-  <div id="map" style="height:360px;width:640px"></div>  
-
-  </div>
-
-  <div id="bottom-bar">
+  <!-- <div id="map" style="width: 640px; height: 360px;"></div>
   
+  <script>
+  var geocoder;
+  var map;
+  var eventPlaceId = "<%= @event.place_id %>"
+  function initialize() {
+    geocoder = new google.maps.Geocoder();
+    var latlng = new google.maps.LatLng(-34.397, 150.644);
+    var mapOptions = {
+      zoom: 8,
+      center: latlng
+    }
+    map = new google.maps.Map(document.getElementById('map'), mapOptions);
+  }
+
+  function codeAddress() {
+    var address = document.getElementById('address').value;
+    geocoder.geocode( { 'placeId': eventPlaceId }, function(results, status) {
+      if (status == 'OK') {
+        map.setCenter(results[0].geometry.location);
+        var marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location
+        });
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+      }
+    });
+  }
+  </script> -->
+
+<!-- <body onload="initialize()">
+ <div id="map" style="width: 320px; height: 480px;"></div>
+  <div>
+    <input id="address" type="textbox" value="Sydney, NSW">
+    <input type="button" value="Encode" onclick="codeAddress()">
+  </div>
+</body>
+</div> -->
+
+
+
+<div id="bottom-bar">
 </div>
 
 </html>
