@@ -1,38 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 
-	<h1><%= "#{@user.first_name + " " + @user.last_name}" %></h1>
-
-
-	<div id=user_info>
-	  <ul>
-	  	<li>Phone: <%= @user.phone_number %></li>
-	  	<li>Location: </li>
-	  </ul>
-	</div>
-
-	<div id=stream>
-		<iframe height="360px" width="640px" src="http://172.16.51.60:3000/feed" name="iframe_a"></iframe>
-	</div>
-  
-  <div id="map" style="height:360px;width:640px"></div>  
-
-</html>
-
 <div id="top-bar">
+<h1><%= "#{@user.first_name + " " + @user.last_name}" %></h1>
 </div>
 
 <div id="main-content">
+  
+  <div id=user_info>
+    <ul>
+      <li>Phone: <%= @user.phone_number %></li>
+      <li>Location: </li>
+    </ul>
+  </div>
+
+  <div id=stream>
+    <iframe height="360px" width="640px" src="http://172.16.51.60:3000/feed" name="iframe_a"></iframe>
+  </div>
+
   <div>
     <%= @friend.first_name + " " + @friend.last_name + " " %>walked you home.
   </div>
-  <div id="replay">
-    <iframe height="360px" width="640px" src="http://172.16.51.60:3000" name="iframe_a"></iframe>
+
+  <div id="map" style="height:360px;width:640px"></div>  
+
   </div>
-  <div>
-    placeholder for map
-  </div>
+
+  <div id="bottom-bar">
+  
 </div>
 
-<div id="bottom-bar">
-</div>
+</html>

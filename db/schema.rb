@@ -28,11 +28,14 @@ ActiveRecord::Schema.define(version: 20160905034205) do
   create_table "events", force: :cascade do |t|
     t.string   "temp_url"
     t.string   "permanent_url"
+    t.string   "placeid"
     t.integer  "drone_id"
     t.integer  "user_id"
+    t.integer  "friend_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.index ["drone_id"], name: "index_events_on_drone_id", using: :btree
+    t.index ["friend_id"], name: "index_events_on_friend_id", using: :btree
     t.index ["user_id"], name: "index_events_on_user_id", using: :btree
   end
 
@@ -70,6 +73,7 @@ ActiveRecord::Schema.define(version: 20160905034205) do
 
   add_foreign_key "drones", "users"
   add_foreign_key "events", "drones"
+  add_foreign_key "events", "friends"
   add_foreign_key "events", "users"
   add_foreign_key "friends", "users"
 end

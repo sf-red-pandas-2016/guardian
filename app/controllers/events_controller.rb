@@ -8,26 +8,12 @@ class EventsController < ApplicationController
 	end
 
 	def create
-		@event = Event.new(user_id: current_user.id, drone_id: 1)
-
-		# To include drone_id in event
-		# if current_user.drones.length == 1
-			# drone = Drone.find_by user_id: current_user.id
-		# 	@event.drone_id = drone.id
-		# elsif current_user.drones.length > 1
-		# 	Drone.where(user_id: current_user.id)
-		# 	# alert message -- which one?
-		# else
-		# 	error_message = "Set up a guardian to follow you home"
-		# end
-
+		@event = Event.new(user_id: current_user.id, friend_id: current_user.friends.first.id, drone_id: 1)
 
 		if @event.save
 			# get location data from phone (add to event table)
-
 			if request.xhr?
-
-				@event.to_json
+				@event.update(placeid: params["place_id"])
 			else
 			end
 		else
@@ -35,7 +21,6 @@ class EventsController < ApplicationController
 			p @error_messages
 			root_path
 		end
-		#
 	end
 
 	def edit
@@ -47,7 +32,10 @@ class EventsController < ApplicationController
 	def show
 		@event = Event.find(params[:id])
 		@user = User.find(@event.user.id)
-		@friend = Friend.find(@user.friend.id)
+
+		#friend variable will need to be updated
+		@friend = Friend.find(@user.friends.first.id)
+		
 		event_path
 	end
 
