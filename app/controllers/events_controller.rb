@@ -9,7 +9,7 @@ class EventsController < ApplicationController
 	end
 
 	def create
-		@event = Event.new(user_id: current_user.id, friend_id: current_user.friends.first.id, drone_id: 1)
+		@event = Event.new(user_id: current_user.id, drone_id: 1)
 
 		if @event.save
 			if request.xhr?

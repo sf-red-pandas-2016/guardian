@@ -43,6 +43,7 @@ class FriendsController < ApplicationController
   end
 
   private
+  
   def friend_params
     params.require(:friend).permit(:first_name, :last_name, :email, :phone_number)
   end
