@@ -4,6 +4,10 @@ class EventsController < ApplicationController
 		@events = current_user.events
 	end
 
+	def new
+		render 'in-progress'
+	end
+
 	def create
 		@event = Event.new(user_id: current_user.id, friend_id: current_user.friends.first.id, drone_id: 1)
 
@@ -29,7 +33,6 @@ class EventsController < ApplicationController
 
 		#friend variable will need to be updated
 		@friend = Friend.find(@user.friends.first.id)
-
 		event_path
 	end
 

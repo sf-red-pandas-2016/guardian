@@ -1,9 +1,8 @@
 <div id="top-bar">
   Guardian
-</div> 
+</div>
 
 <div id="main-content">
-
   <div id="search-bar">
     <input id="pac-input" class="controls" type="text" placeholder="Enter your location">
   </div>
@@ -11,16 +10,17 @@
   <div id=shown-div class=walk-me-home>
     Walk me home
   </div>
-  <div id=hidden-div class="location-search">
+  <div class="location-search" id=shown-div>
     placeholder for location bar
   </div>
 </div>
 
 <div id="bottom-bar">
   <div class=bottom-menu>
-    <a>*Contacts*</a><!-- add link tag to contacts -->
+    <%= link_to "*Friends*", friends_path %>
+    <!-- add link tag to contacts -->
     <div class=bottom-separator></div>
-    <a>*Events*</a><!-- add link tag to events -->
+    <%= link_to "*Events*", events_path %>
   </div>
 </div>
 
@@ -78,8 +78,8 @@
         width: 345px;
       }
     </style>
-    
-    
+
+
     <script>
       function initAutocomplete() {
         var input = document.getElementById('pac-input');
@@ -87,7 +87,7 @@
         var searchBox = new google.maps.places.SearchBox(input);
 
         var markers = [];
-    
+
         searchBox.addListener('places_changed', function() {
           var places = searchBox.getPlaces();
           if (places.length == 0) {
@@ -104,7 +104,7 @@
               url: "/events",
               method: "POST",
               data: { place_id: place.formatted_address }
-            })  
+            })
             .done(function(serverResponse){
               $('#pac-input').hide()
               console.log(serverResponse + " -- This is the event-created server response");
@@ -120,8 +120,3 @@
     </script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAy-vo2nS3tMm9kiAE3GXSt8bU3VFOm-c4&libraries=places&callback=initAutocomplete" async defer></script>
-
-
-
-
-
