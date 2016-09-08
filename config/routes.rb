@@ -12,8 +12,6 @@ Rails.application.routes.draw do
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  resources :users
-
   get '/sms/text_friend' => 'sms#text_friend'
   get '/sms/text_friend_once_home' => 'sms#text_friend_once_home'
 

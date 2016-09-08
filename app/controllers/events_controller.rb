@@ -1,6 +1,4 @@
 class EventsController < ApplicationController
-	# before_action :all_tasks, only: [:index, :create]
-	# respond_to :html, :js
 
 	def index
 		@events = current_user.events
@@ -10,7 +8,6 @@ class EventsController < ApplicationController
 		@event = Event.new(user_id: current_user.id, friend_id: current_user.friends.first.id, drone_id: 1)
 
 		if @event.save
-			# get location data from phone (add to event table)
 			if request.xhr?
 				@event.update(place_id: params["place_id"])
 			else
@@ -23,8 +20,6 @@ class EventsController < ApplicationController
 	end
 
 	def edit
-		p "in the edit route"
-		p "*" * 50
 		edit_event_path
 	end
 
@@ -39,14 +34,6 @@ class EventsController < ApplicationController
 	end
 
 	def update
-		# assign:
-			# event.permanent_url
-		# delete:   ????
-			# event.temp_url
-		# update:
-			# event.completed = true
-
-		# submits text message to friend indicating home safely
 		redirect_to 'events_path'
 	end
 
