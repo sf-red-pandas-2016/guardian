@@ -10,13 +10,19 @@ class FriendsController < ApplicationController
   # def new
   # end
 
+  def destroy
+    @friend = Friend.find(params[:id])
+    @friend.destroy
+
+    redirect_to friends_path
+  end
+
   def show
+    @friend = Friend.find(params[:id])
   end
 
   def update
   end
 
-  def destroy
-  end
 
 end

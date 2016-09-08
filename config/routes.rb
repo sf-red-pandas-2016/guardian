@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  
+
   resources :users
   resources :friends
   resources :events
@@ -14,6 +14,6 @@ Rails.application.routes.draw do
   get '/sms/text_friend' => 'sms#text_friend'
   get '/sms/text_friend_once_home' => 'sms#text_friend_once_home'
 
-  get 'events/show' => 'event#show'
+  delete "/friends/:id" => "friends#destroy"
 
 end
