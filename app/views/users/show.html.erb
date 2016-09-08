@@ -3,18 +3,19 @@
 </div>
 
 <div id="main-content">
-  <div id="walk-me-home" class=shown-div>
+  <div class="walk-me-home" id=hidden-div>
     Walk me home
   </div>
-  <div id="location-search" class=hidden-div>
+  <div class="location-search" id=shown-div>
     placeholder for location bar
   </div>
 </div>
 
 <div id="bottom-bar">
   <div class=bottom-menu>
-    <a>*Contacts*</a><!-- add link tag to contacts -->
+    <%= link_to "*Friends*", friends_path %>
+    <!-- add link tag to contacts -->
     <div class=bottom-separator></div>
-    <a>*Events*</a><!-- add link tag to events -->
+    <%= link_to "*Events*", events_path %>
   </div>
 </div>

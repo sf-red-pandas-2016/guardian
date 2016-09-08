@@ -109,7 +109,7 @@ body {
 #logo-space {
   display: flex;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
   width: 100vw;
   height: 80vh;
   font-size: 3em;
@@ -261,14 +261,14 @@ em {
   display: none;
 }*/
 
-.hidden-div {
+#hidden-div {
   display: none;
 }
-.shown-div {
+#shown-div {
   display: flex;
 }
 
-#walk-me-home {
+.walk-me-home {
   display: flex;
   justify-content: center;
   align-items: center;

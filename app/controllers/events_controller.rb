@@ -4,26 +4,16 @@ class EventsController < ApplicationController
 
 	def index
 		@events = current_user.events
-		render :layout => false
+	end
+
+	def new
+		render 'in-progress'
 	end
 
 	def create
 		@event = Event.new(user_id: current_user.id, drone_id: 1)
 
-		# To include drone_id in event
-		# if current_user.drones.length == 1
-			# drone = Drone.find_by user_id: current_user.id
-		# 	@event.drone_id = drone.id
-		# elsif current_user.drones.length > 1
-		# 	Drone.where(user_id: current_user.id)
-		# 	# alert message -- which one?
-		# else
-		# 	error_message = "Set up a guardian to follow you home"
-		# end
-
-
 		if @event.save
-			# get location data from phone (add to event table)
 
 			if request.xhr?
 
@@ -39,12 +29,11 @@ class EventsController < ApplicationController
 	end
 
 	def edit
-		p "in the edit route"
-		p "*" * 50
 		edit_event_path
 	end
 
 	def show
+		p "In show route"
 		@user = User.find(params[:id])
 		@event = Event.last
 		@friend = Friend.find(@event.friend_id)
@@ -52,14 +41,6 @@ class EventsController < ApplicationController
 	end
 
 	def update
-		# assign:
-			# event.permanent_url
-		# delete:   ????
-			# event.temp_url
-		# update:
-			# event.completed = true
-
-		# submits text message to friend indicating home safely
 		redirect_to 'events_path'
 	end
 
