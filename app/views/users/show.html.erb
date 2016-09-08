@@ -3,7 +3,7 @@
 </div>
 
 <div id="main-content">
-  <div class=location-input id=shown-div>
+  <div class=location-input id=hidden-div>
     <div id="search-bar">
       <input id="pac-input" class="controls" type="text" placeholder="Enter your location">
     </div>
@@ -97,22 +97,26 @@
               console.log("Returned place contains no geometry");
               return;
             }
-            console.log(place)
             $.ajax({
               url: "/events",
               method: "POST",
               data: { place_id: place.formatted_address }
             })
             .done(function(serverResponse){
+              console.log(serverResponse)
+              console.log(" -- This is the event-created server response");
+
               $('#pac-input').hide()
               $('.location-input').removeAttr('id')
-              $('.walk-me-home').removeAttr('id')
+              // $('.walk-me-home').removeAttr('id')
               $('.location-input').attr('id', 'hidden-div')
-              $('.walk-me-home').attr('id', 'shown-div')
-              console.log(serverResponse + " -- This is the event-created server response");
+              // $('.walk-me-home').attr('id', 'shown-div')
+              window.location.href = "/events/" + serverResponse.event_id + "/drones/" + serverResponse.drone_id;
             })
             .fail(function(serverResponse){
-              console.log("New event creation failed");
+              console.log(serverResponse)
+              console.log("New event creation failed")
+
             })
 
           });
