@@ -1,4 +1,4 @@
-Drone.delete_all
+git Drone.delete_all
 Event.delete_all
 User.delete_all
 Friend.delete_all

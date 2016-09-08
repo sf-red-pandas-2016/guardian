@@ -1,32 +1,19 @@
 class EventsController < ApplicationController
-	# before_action :all_tasks, only: [:index, :create]
-	# respond_to :html, :js
 
 	def index
 		@events = current_user.events
 	end
 
+	def new
+		render 'in-progress'
+	end
+
 	def create
-		@event = Event.new(user_id: current_user.id, drone_id: 1)
-
-		# To include drone_id in event
-		# if current_user.drones.length == 1
-			# drone = Drone.find_by user_id: current_user.id
-		# 	@event.drone_id = drone.id
-		# elsif current_user.drones.length > 1
-		# 	Drone.where(user_id: current_user.id)
-		# 	# alert message -- which one?
-		# else
-		# 	error_message = "Set up a guardian to follow you home"
-		# end
-
+		@event = Event.new(user_id: current_user.id, friend_id: current_user.friends.first.id, drone_id: 1)
 
 		if @event.save
-			# get location data from phone (add to event table)
-
 			if request.xhr?
-
-				@event.to_json
+				@event.update(place_id: params["place_id"])
 			else
 			end
 		else
@@ -34,31 +21,22 @@ class EventsController < ApplicationController
 			p @error_messages
 			root_path
 		end
-		#
 	end
 
 	def edit
-		p "in the edit route"
-		p "*" * 50
 		edit_event_path
 	end
 
 	def show
-		@user = User.find(params[:id])
-		@event = Event.last
-		@friend = Friend.find(@event.friend_id)
+		@event = Event.find(params[:id])
+		@user = User.find(@event.user.id)
+
+		#friend variable will need to be updated
+		@friend = Friend.find(@user.friends.first.id)
 		event_path
 	end
 
 	def update
-		# assign:
-			# event.permanent_url
-		# delete:   ????
-			# event.temp_url
-		# update:
-			# event.completed = true
-
-		# submits text message to friend indicating home safely
 		redirect_to 'events_path'
 	end
 
