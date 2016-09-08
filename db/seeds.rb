@@ -15,5 +15,5 @@ end
 Drone.create(name: "Patricia", server_address: "http://172.16.50.232:8080/start", user_id: 1)
 
 4.times do
-  Event.create(temp_url: "http://guardian.pagekite.me", permanent_url: "http://guardian.pagekite.me", user_id: 1, drone_id: 1)
+  Event.create(temp_url: "http://guardian.pagekite.me", permanent_url: "http://guardian.pagekite.me", user_id: 1, drone_id: 1, friend_id: rand(1..4))
 end

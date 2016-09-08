@@ -4,7 +4,6 @@ class EventsController < ApplicationController
 
 	def index
 		@events = current_user.events
-		render :layout => false
 	end
 
 	def create
