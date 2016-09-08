@@ -95,6 +95,10 @@ body {
   height: 80vh;
 }
 
+#main-content #no-bottom {
+  height: 90vh;
+}
+
 #bottom-bar {
   width: 100vw;
   height: 10vh;
@@ -182,8 +186,17 @@ em {
   list-style-type: none;
 }
 
+.lists li {
+
+}
+
 .lists a {
-  display: block;
+  display: flex;
+  align-items: center;
+  border: 1px var(--color-borders) solid;
+  width: 90vw;
+  height: 10vh;
+  padding-left: 10vw;
   text-decoration: none;
   color: var(--color-text-dark);
 }
@@ -196,6 +209,41 @@ em {
 .lists a:clicked {
   text-decoration: none;
   color: var(--color-text-dark);
+}
+
+#info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 20vh;
+  font-size: 1.6em;
+  flex-direction: column;
+}
+
+#info p {
+  display: block;
+  height: 6vh;
+}
+#video {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 35vh;
+  border-bottom: 1px var(--color-text-light) solid;
+  background-color: var(--color-background-landing);
+  color: var(--color-text-light);
+}
+
+#map {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 35vh;
+  background-color: var(--color-background-landing);
+  color: var(--color-text-light);
 }
 
 .bottom-menu {
@@ -213,6 +261,17 @@ em {
   height: 10vh;
   text-decoration: none;
   color: var(--color-text-light);
+}
+
+.bottom-menu form {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 49vw;
+  height: 10vh;
+  text-decoration: none;
+  color: var(--color-text-light);
+  border: none;
 }
 
 .bottom-menu input {

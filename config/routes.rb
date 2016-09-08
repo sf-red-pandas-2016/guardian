@@ -14,9 +14,6 @@ Rails.application.routes.draw do
   get '/sms/text_friend' => 'sms#text_friend'
   get '/sms/text_friend_once_home' => 'sms#text_friend_once_home'
 
-# get '/events/progress' => 'events#progress'
-
-
   delete "/friends/:id" => "friends#destroy"
 
 end

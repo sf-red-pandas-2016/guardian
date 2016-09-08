@@ -1,17 +1,16 @@
 <div id="top-bar">
+  <% date = @event.created_at %>
+  <%= date.strftime("%a %B %d") %>
 </div>
 
-<div id="main-content">
-  <div>
-    <%= @friend.first_name + " " + @friend.last_name + " " %>walked you home.
-  </div>
-  <div id="replay">
+<div id="main-content no-bottom">
+    <div id=info>
+      <%= @friend.first_name + " " + @friend.last_name + " " %>walked you home.
+    </div>
+  <div id="video">
     <iframe height="360px" width="640px" src="http://172.16.51.60:3000" name="iframe_a"></iframe>
   </div>
-  <div>
+  <div id="map">
     placeholder for map
   </div>
-</div>
-
-<div id="bottom-bar">
 </div>
