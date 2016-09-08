@@ -14,7 +14,8 @@ class EventsController < ApplicationController
 		if @event.save
 			if request.xhr?
 				@event.update(place_id: params["place_id"])
-			else
+				render status: 200, :json => {event_id: "#{@event.id}", drone_id: "#{@event.drone.id}"}
+
 			end
 		else
 			@error_messages = @event.errors.full_messages
