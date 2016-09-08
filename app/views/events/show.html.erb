@@ -1,16 +1,37 @@
 <div id="top-bar">
+
+  <h1><%= "#{@user.first_name + " " + @user.last_name}" %></h1>
+
   <% date = @event.created_at %>
   <%= date.strftime("%a %B %d") %>
+
 </div>
 
 <div id="main-content no-bottom">
-    <div id=info>
-      <%= @friend.first_name + " " + @friend.last_name + " " %>walked you home.
-    </div>
+
+  <div id=user_info>
+    <ul>
+      <li>Phone: <%= @user.phone_number %></li>
+      <li>Location: <%= @event.place_id %></li>
+    </ul>
+  </div>
+
+  <div id=info>
+    <%= @friend.first_name + " " + @friend.last_name + " " %>walked you home.
+  </div>
+
   <div id="video">
     <iframe height="360px" width="640px" src="http://172.16.51.60:3000" name="iframe_a"></iframe>
   </div>
+
   <div id="map">
-    placeholder for map
+    <iframe
+      width="640"
+      height="360"
+      frameborder="0" style="border:0"
+      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAy-vo2nS3tMm9kiAE3GXSt8bU3VFOm-c4&q=<%= @event.place_id %>" allowfullscreen>
+    </iframe>
+
   </div>
 </div>
+
