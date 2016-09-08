@@ -65,6 +65,7 @@
     <script>
       function initAutocomplete() {
         var input = document.getElementById('pac-input');
+
         var searchBox = new google.maps.places.SearchBox(input);
 
         var markers = [];
@@ -80,11 +81,11 @@
               console.log("Returned place contains no geometry");
               return;
             }
-
+            console.log(place)
             $.ajax({
               url: "/events",
               method: "POST",
-              data: { place_id: place.id }
+              data: { place_id: place.formatted_address }
             })  
             .done(function(serverResponse){
               $('#pac-input').hide()
@@ -96,8 +97,6 @@
 
           });
         });
-
-
 
       }
     </script>
