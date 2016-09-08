@@ -1,3 +1,6 @@
+//= require jquery
+//= require jquery_ujs
+
 $(document).ready(function(){
 
   // var turbolinks = require('turbolinks')
@@ -8,25 +11,29 @@ $(document).ready(function(){
          url: "/sms/text_friend"
        })
        .done(function(serverResponse){
-         console.log(serverResponse + " -- This is the post-send-text server response");
+         $('#pac-input').show()
+
+         $('.location-input').removeAttr('id')
+         $('.walk-me-home').removeAttr('id')
+         $('.location-input').attr('id', 'shown-div')
+         $('.walk-me-home').attr('id', 'hidden-div')
        })
        .fail(function(serverResponse){
-         console.log("Request failed");
+         console.log("Request to send text failed");
        })
 
     $.ajax({
       // Jason's server
-      url: "http://172.16.51.60:3000/start",
+      // url: "http://172.16.51.60:3000/start",
       // Eric's server
-      // url: "http://172.16.50.232:8080/start",
+      url: "http://172.16.50.232:8080/start",
       crossDomain : true
     })
     .done(function(serverResponse){
-      // $(".walk-me-home").hide();
-      // $(".home-safely").show();
-      console.log(serverResponse + " -- This is the start-drone server response");
     })
-  // need to add failure response
+    .fail(function(serverResponse){
+      console.log("Request to start drone failed");
+    })
   })
 
   $("#home-safely").on("click", function(e){

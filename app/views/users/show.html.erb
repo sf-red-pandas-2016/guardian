@@ -3,28 +3,26 @@
 </div>
 
 <div id="main-content">
-  <div id="search-bar">
-    <input id="pac-input" class="controls" type="text" placeholder="Enter your location">
+  <div class=location-input id=hidden-div>
+    <div id="search-bar">
+      <input id="pac-input" class="controls" type="text" placeholder="Enter your location">
+    </div>
   </div>
 
   <div id=shown-div class=walk-me-home>
     Walk me home
   </div>
-  <div class="location-search" id=shown-div>
-    placeholder for location bar
-  </div>
 </div>
 
 <div id="bottom-bar">
   <div class=bottom-menu>
-    <%= link_to "*Friends*", friends_path %>
-    <!-- add link tag to contacts -->
+    <%= link_to "Friends", friends_path %>
     <div class=bottom-separator></div>
-    <%= link_to "*Events*", events_path %>
+    <%= link_to "Events", events_path %>
   </div>
 </div>
 
-    <style>
+<!--     <style>
       html, body {
         height: 100%;
         margin: 0;
@@ -77,7 +75,7 @@
       #target {
         width: 345px;
       }
-    </style>
+    </style> -->
 
 
     <script>
@@ -99,18 +97,26 @@
               console.log("Returned place contains no geometry");
               return;
             }
-            console.log(place)
             $.ajax({
               url: "/events",
               method: "POST",
               data: { place_id: place.formatted_address }
             })
             .done(function(serverResponse){
+              console.log(serverResponse)
+              console.log(" -- This is the event-created server response");
+
               $('#pac-input').hide()
-              console.log(serverResponse + " -- This is the event-created server response");
+              $('.location-input').removeAttr('id')
+              // $('.walk-me-home').removeAttr('id')
+              $('.location-input').attr('id', 'hidden-div')
+              // $('.walk-me-home').attr('id', 'shown-div')
+              window.location.href = "/events/" + serverResponse.event_id + "/drones/" + serverResponse.drone_id;
             })
             .fail(function(serverResponse){
-              console.log("New event creation failed");
+              console.log(serverResponse)
+              console.log("New event creation failed")
+
             })
 
           });
