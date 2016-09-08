@@ -3,14 +3,10 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :users
+  resources :users, only: [:show]
+
   resources :friends
-  resources :events
-
-  resources :user do
-    :events
-  end
-
+  
   devise_scope :user do
    get '/users/sign_out' => 'devise/sessions#destroy'
   end
@@ -20,9 +16,7 @@ Rails.application.routes.draw do
     get '/stream' => "events#show/stream"
   end
 
-
   get '/sms/text_friend' => 'sms#text_friend'
-  get '/sms/text_friend_once_home' => 'sms#text_friend_once_home'
 
-  delete "/friends/:id" => "friends#destroy"
+  # delete "/friends/:id" => "friends#destroy"
 end

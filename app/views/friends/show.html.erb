@@ -14,6 +14,6 @@
   <div class=bottom-menu>
     <%= link_to "Edit", edit_friend_path %>
     <div class=bottom-separator></div>
-    <%= button_to "Remove", 'destroy', :method => 'delete' %>
+    <%= link_to "Delete", friend_path(@friend), method: :delete %>
   </div>
 </div>
