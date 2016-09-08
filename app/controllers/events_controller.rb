@@ -5,7 +5,7 @@ class EventsController < ApplicationController
 	end
 
 	def new
-		render 'in-progress'
+		# render 'in-progress'
 	end
 
 	def create

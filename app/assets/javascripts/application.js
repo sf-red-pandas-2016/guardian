@@ -34,18 +34,6 @@ $(document).ready(function(){
     .fail(function(serverResponse){
       console.log("Request to start drone failed");
     })
-
-    $.ajax({
-      url: "events/:id/drone/:id",
-      crossDomain : true
-    })
-    .done(function(serverResponse){
-      // $(".walk-me-home").hide();
-      // $(".home-safely").show();
-    })
-    .fail(function(serverResponse){
-      console.log("Request to start drone failed");
-    })
   })
 
   $("#home-safely").on("click", function(e){
