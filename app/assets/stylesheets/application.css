@@ -6,6 +6,9 @@
   --color-background-button: #EEEEEE;
   --color-background-button-walk: #e67e22;
   --color-background-main: #ecf0f1;
+  --color-background-connected: #2ecc71;
+  --color-background-walk: #bdc3c7;
+  --color-background-safe: #3498db;
   --color-text-light: #FEFFFE;
   --color-text-dark: #312F2F;
   --color-borders: #CCCCCC;
@@ -318,14 +321,6 @@ em {
   display: block;
 }
 
-/*#home-safely {
-  display: ;
-}
-
-#show-events {
-  display: none;
-}*/
-
 #hidden-div {
   display: none;
 }
@@ -398,4 +393,48 @@ em {
 }
 
 #type-selector label {
+}
+
+.help-status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 10vh;
+  font-size: 1em;
+  color: var(--color-text-light);
+}
+
+#help-not-connected {
+  background-color: var(--color-text-dark);
+}
+
+#help-connected {
+  background-color: var(--color-background-connected);
+}
+
+#walk-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 45vh;
+  color: var(--color-text-light);
+  background-color: var(--color-background-walk);
+  font-size: 2em;
+}
+
+#home-safely {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 45vh;
+  color: var(--color-text-light);
+  background-color: var(--color-background-safe);
+  font-size: 2em;
+}
+
+#show-events {
+  display: none;
 }
