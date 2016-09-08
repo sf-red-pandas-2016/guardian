@@ -1,6 +1,4 @@
 class EventsController < ApplicationController
-	# before_action :all_tasks, only: [:index, :create]
-	# respond_to :html, :js
 
 	def index
 		@events = current_user.events
@@ -11,13 +9,11 @@ class EventsController < ApplicationController
 	end
 
 	def create
-		@event = Event.new(user_id: current_user.id, drone_id: 1)
+		@event = Event.new(user_id: current_user.id, friend_id: current_user.friends.first.id, drone_id: 1)
 
 		if @event.save
-
 			if request.xhr?
-
-				@event.to_json
+				@event.update(place_id: params["place_id"])
 			else
 			end
 		else
@@ -25,7 +21,6 @@ class EventsController < ApplicationController
 			p @error_messages
 			root_path
 		end
-		#
 	end
 
 	def edit
@@ -33,10 +28,11 @@ class EventsController < ApplicationController
 	end
 
 	def show
-		p "In show route"
-		@user = User.find(params[:id])
-		@event = Event.last
-		@friend = Friend.find(@event.friend_id)
+		@event = Event.find(params[:id])
+		@user = User.find(@event.user.id)
+
+		#friend variable will need to be updated
+		@friend = Friend.find(@user.friends.first.id)
 		event_path
 	end
 

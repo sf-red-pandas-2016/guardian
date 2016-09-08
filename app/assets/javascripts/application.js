@@ -14,18 +14,6 @@ $(document).ready(function(){
          console.log("Request failed");
        })
 
-
-    //  $.ajax({
-    //       url: "/events",
-    //       method: "POST"
-    //     })
-    //     .done(function(serverResponse){
-    //       console.log(serverResponse + " -- This is the event-created server response");
-    //     })
-    //     .fail(function(serverResponse){
-    //       console.log("New event creation failed");
-    //     })
-
     $.ajax({
       // Jason's server
       url: "http://172.16.51.60:3000/start",
