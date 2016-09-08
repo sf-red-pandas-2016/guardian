@@ -5,7 +5,7 @@ class EventsController < ApplicationController
 	end
 
 	def new
-		render 'in-progress'
+		# render 'in-progress'
 	end
 
 	def create
@@ -14,7 +14,8 @@ class EventsController < ApplicationController
 		if @event.save
 			if request.xhr?
 				@event.update(place_id: params["place_id"])
-			else
+				render status: 200, :json => {event_id: "#{@event.id}", drone_id: "#{@event.drone.id}"}
+
 			end
 		else
 			@error_messages = @event.errors.full_messages
