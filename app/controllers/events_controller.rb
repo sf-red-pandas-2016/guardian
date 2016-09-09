@@ -1,7 +1,8 @@
 class EventsController < ApplicationController
 
 	def index
-		@events = current_user.events
+		@events = current_user.events.limit(8)
+		@user = current_user
 	end
 
 	def new
@@ -9,7 +10,7 @@ class EventsController < ApplicationController
 	end
 
 	def create
-		@event = Event.new(user_id: current_user.id, drone_id: 1)
+		@event = Event.new(user_id: current_user.id, drone_id: 1, event_status: "not connected")
 
 		if @event.save
 			if request.xhr?
@@ -38,7 +39,9 @@ class EventsController < ApplicationController
 	end
 
 	def update
-		redirect_to 'events_path'
+		p params
+		@event = Event.find(params[:id])
+		@event.update(event_status: params[:event_status])
 	end
 
 	def destroy
@@ -48,6 +51,11 @@ class EventsController < ApplicationController
 	def stream
 		@event = Event.find(params[:event_id])
 		event_stream_path
+	end
+
+	def status
+		@event = Event.find(params[:event_id])
+		render status: 200, :json => { event_status: @event.event_status }
 	end
 
 end

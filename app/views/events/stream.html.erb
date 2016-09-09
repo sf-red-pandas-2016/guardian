@@ -1,23 +1,21 @@
 <div id="top-bar">
 
   <div class=watch-status id=help-not-connected>
-    Click to let <%= @event.user.first_name %> know you're watching
+    Click to let <%= @event.user.first_name %> know you're watching.
   </div>
 
 </div>
 
-<div id="main-content">
+<div id="main-content no-bottom">
 
-	<div id=user_info>
-		<h1><%= "#{@event.user.first_name + " " + @event.user.last_name}" %></h1>
-	  <ul>
-	    <li>Phone: <%= @event.user.phone_number %></li>
-	    <li>Location: <%= @event.place_id %></li>
-	  </ul>
+	<div id=info>
+		<p><%= "#{@event.user.first_name + " " + @event.user.last_name}" %></p>
+    <p><%= @event.user.phone_number %></p>
+    <p><span><%= @event.place_id %></span></p>
 	</div>
 
 	<div id="video">
-	  <iframe height="360px" width="640px" src="http://172.16.51.60:3000/feed" name="iframe_a"></iframe>
+	  <iframe height="100%" width="100%" src="http://172.16.51.60:3000/feed" name="iframe_a"></iframe>
 	</div>
 
 	<div id="map">
@@ -35,13 +33,34 @@
 
 </div>
 
-<div id="bottom-bar">
-</div>
+<script>
+  var address = window.location.href;
+  var split_address = address.split('/');
+  var event_id = split_address[split_address.length-2];
 
-<div>
+  function statusCheck() {
+    $.ajax({
+      url: "/events/"+event_id+"/status"
+    })
+    .done(function(serverResponse) {
+      console.log("success")
+      console.log(serverResponse.event_status);
+      if (serverResponse.event_status == "finished") {
+        $("#top-bar").hide();
+        $(".watch-status").hide();
+        $("#info").hide();
+        $("#video").hide();
+        $("#map").hide();
+        $(".success-message").removeAttr('id');
+        $(".success-message").attr('id', 'shown-div');
+        clearInterval(refreshElement);
+      }
+    })
+    .fail(function(serverResponse) {
+      console.log("fail")
+      console.log(serverResponse)
+    })
+  }
 
-
-
-
-
-</html>
+  var refreshElement = setInterval(statusCheck, 5000);
+</script>
