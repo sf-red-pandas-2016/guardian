@@ -1,5 +1,5 @@
 #Guardian
-
+ A Rails app that gets you home safely.
 ##Team:
 * Jason Lorentzen @codejlo
 * Shawn Tuttle @ShawnTe
