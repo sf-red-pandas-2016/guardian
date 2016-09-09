@@ -15,5 +15,3 @@ Drone.create(name: "Patricia", server_address: "http://172.16.50.232:8080/start"
 4.times do
   Event.create(temp_url: "http://guardian.pagekite.me", permanent_url: "http://guardian.pagekite.me", place_id: "633 Folsom St, San Francisco, CA", user_id: 1, drone_id: 1, event_status: "not connected")
 end
-
-
