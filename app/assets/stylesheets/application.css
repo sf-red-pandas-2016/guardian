@@ -395,7 +395,7 @@ em {
 #type-selector label {
 }
 
-.help-status {
+.help-status, .watch-status {
   display: flex;
   justify-content: center;
   align-items: center;
