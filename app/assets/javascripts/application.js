@@ -119,14 +119,28 @@ $(document).ready(function(){
   //   })
   })
 
-  $()
+  $('.watch-status').on("click", function(e) {
 
-        $(".watch-status").hide();
-      $("#user_info").hide();
-      $("#video").hide();
-      $("#map").hide();
-      $(".success-message").removeAttr('id');
-      $(".success-message").attr('id', 'shown-div');
+    var address = window.location.href;
+    var split_address = address.split('/');
+    var event_id = split_address[split_address.length-2];
+
+    this_div = this;
+
+    $.ajax({
+      url: "/events/"+event_id,
+      method: "put",
+      data: {event_status: "connected"}
+    })
+    .done(function(serverResponse){
+      $(this_div).hide();
+      console.log(serverResponse);
+    })
+    .fail(function(serverResponse) {
+      console.log(serverResponse);
+    });
+
+  });
 
 });
 

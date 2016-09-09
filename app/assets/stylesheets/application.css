@@ -245,6 +245,12 @@ em {
   color: var(--color-text-light);
 }
 
+#user-info {
+  display: flex;
+  align-items: center;
+  height: 20vh;
+}
+
 #map {
   display: flex;
   justify-content: center;

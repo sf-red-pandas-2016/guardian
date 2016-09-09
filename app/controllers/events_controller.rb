@@ -52,4 +52,9 @@ class EventsController < ApplicationController
 		event_stream_path
 	end
 
+	def status
+		@event = Event.find(params[:event_id])
+		render status: 200, :json => { event_status: @event.event_status }
+	end
+
 end

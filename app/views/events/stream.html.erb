@@ -6,7 +6,7 @@
 
 </div>
 
-<div id="main-content">
+<div id="main-content no-bottom" >
 
 	<div id=user_info>
 		<h1><%= "#{@event.user.first_name + " " + @event.user.last_name}" %></h1>
@@ -35,13 +35,33 @@
 
 </div>
 
-<div id="bottom-bar">
-</div>
+<script>
+  var address = window.location.href;
+  var split_address = address.split('/');
+  var event_id = split_address[split_address.length-2];
 
-<div>
+  function statusCheck() {
+    $.ajax({
+      url: "/events/"+event_id+"/status"
+    })
+    .done(function(serverResponse) {
+      console.log("success")
+      console.log(serverResponse.event_status);
+      if (serverResponse.event_status == "finished") {
+        $(".watch-status").hide();
+        $("#user_info").hide();
+        $("#video").hide();
+        $("#map").hide();
+        $(".success-message").removeAttr('id');
+        $(".success-message").attr('id', 'shown-div');
+        clearInterval(refreshElement);
+      }
+    })
+    .fail(function(serverResponse) {
+      console.log("fail")
+      console.log(serverResponse)
+    })
+  }
 
-
-
-
-
-</html>
+  var refreshElement = setInterval(statusCheck, 5000);
+</script>

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   resources :events do
     get '/stream' => "events#stream"
+    get '/status' => "events#status"
     resources :drones, only: [:show]
   end
 
