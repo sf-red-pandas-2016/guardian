@@ -37,6 +37,12 @@ $(document).ready(function(){
   })
 
   $("#home-safely").on("click", function(e){
+    
+    var address = window.location.href;
+    var split_address = address.split('/');
+    var event_id = split_address[split_address.length-3];
+
+
     $.ajax({
       // Jason's server
       url: "http://172.16.51.60:3000/end",
@@ -44,22 +50,24 @@ $(document).ready(function(){
       // url: "http://172.16.50.232:8080/end",
       crossDomain : true
     })
-    .done(function(serverResponse){
-      $(".watch-status").hide();
-      $("#user_info").hide();
-      $("#video").hide();
-      $("#map").hide();
-      $(".success-message").removeAttr('id');
-      $(".success-message").attr('id', 'shown-div');
-      window.location.href = "/events";
-
-    })
     .fail(function(serverResponse){
       console.log("Request failed");
-    })
+    });
 
-    // need to add failure response
-  })
+    $.ajax({
+      url: "/events/"+event_id,
+      method: "put",
+      data: {event_status: "finished"}
+    })
+    .done(function(serverResponse){
+      console.log(serverResponse);
+      window.location.href = "/events";
+    })
+    .fail(function(serverResponse) {
+      console.log(serverResponse);
+    });
+
+  });
 
   $("#walk-button").on("click", function(){
     $.ajax({
@@ -111,4 +119,14 @@ $(document).ready(function(){
   //   })
   })
 
+  $()
+
+        $(".watch-status").hide();
+      $("#user_info").hide();
+      $("#video").hide();
+      $("#map").hide();
+      $(".success-message").removeAttr('id');
+      $(".success-message").attr('id', 'shown-div');
+
 });
+
