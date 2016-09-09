@@ -2,7 +2,7 @@ class SmsController < ApplicationController
 
 	def text_friend
 		@user = current_user
-		message = "This is " + @user.first_name + " " + @user.last_name + ". Thanks for watching that I get home safely! Link to watch: http://localhost:3000/events/"
+		message = "This is " + @user.first_name + " " + @user.last_name + ". Thanks for watching that I get home safely! Link to watch: http://172.16.51.60:3000/feed"
 
 	 	to = @user.friends.first
 	 	client = Twilio::REST::Client.new(
@@ -11,7 +11,7 @@ class SmsController < ApplicationController
 	  	)
 	  	if client.messages.create(
 
-	    		to: to.phone_number,
+	    		to: "+13302070939",
 	    		from: @user.phone_number,
 	     		body: message
 	    	)
@@ -19,6 +19,6 @@ class SmsController < ApplicationController
 	  	else
 	    	flash[:notice] = "Error: Message did not send"
 	  	end
-			
+
 		end
 end
