@@ -1,0 +1,47 @@
+<div id="top-bar">
+
+  <div class=watch-status id=help-not-connected>
+    Click to let <%= @event.user.first_name %> know you're watching
+  </div>
+
+</div>
+
+<div id="main-content">
+
+	<div id=user_info>
+		<h1><%= "#{@event.user.first_name + " " + @event.user.last_name}" %></h1>
+	  <ul>
+	    <li>Phone: <%= @event.user.phone_number %></li>
+	    <li>Location: <%= @event.place_id %></li>
+	  </ul>
+	</div>
+
+	<div id="video">
+	  <iframe height="360px" width="640px" src="http://172.16.51.60:3000/feed" name="iframe_a"></iframe>
+	</div>
+
+	<div id="map">
+    <iframe
+      width="100%"
+      height="100%"
+      frameborder="0" style="border:0"
+      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAy-vo2nS3tMm9kiAE3GXSt8bU3VFOm-c4&q=<%= @event.place_id %>" allowfullscreen>
+    </iframe>
+  </div>
+
+  <div class=success-message id=hidden-div>
+  	<%= @event.user.first_name %> is home.
+  </div>
+
+</div>
+
+<div id="bottom-bar">
+</div>
+
+<div>
+
+
+
+
+
+</html>

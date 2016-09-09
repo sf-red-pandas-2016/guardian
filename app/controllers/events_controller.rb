@@ -45,4 +45,9 @@ class EventsController < ApplicationController
 		# does user need to be able to destroy event from the events index?
 	end
 
+	def stream
+		@event = Event.find(params[:event_id])
+		event_stream_path
+	end
+
 end
