@@ -1,23 +1,21 @@
 <div id="top-bar">
 
   <div class=watch-status id=help-not-connected>
-    Click to let <%= @event.user.first_name %> know you're watching
+    Click to let <%= @event.user.first_name %> know you're watching.
   </div>
 
 </div>
 
-<div id="main-content no-bottom" >
+<div id="main-content no-bottom">
 
-	<div id=user_info>
-		<h1><%= "#{@event.user.first_name + " " + @event.user.last_name}" %></h1>
-	  <ul>
-	    <li>Phone: <%= @event.user.phone_number %></li>
-	    <li>Location: <%= @event.place_id %></li>
-	  </ul>
+	<div id=info>
+		<p><%= "#{@event.user.first_name + " " + @event.user.last_name}" %></p>
+    <p><%= @event.user.phone_number %></p>
+    <p><span><%= @event.place_id %></span></p>
 	</div>
 
 	<div id="video">
-	  <iframe height="360px" width="640px" src="http://172.16.51.60:3000/feed" name="iframe_a"></iframe>
+	  <iframe height="100%" width="100%" src="http://172.16.51.60:3000/feed" name="iframe_a"></iframe>
 	</div>
 
 	<div id="map">
@@ -48,8 +46,9 @@
       console.log("success")
       console.log(serverResponse.event_status);
       if (serverResponse.event_status == "finished") {
+        $("#top-bar").hide();
         $(".watch-status").hide();
-        $("#user_info").hide();
+        $("#info").hide();
         $("#video").hide();
         $("#map").hide();
         $(".success-message").removeAttr('id');

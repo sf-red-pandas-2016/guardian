@@ -25,7 +25,7 @@
       url: "/events/"+event_id+"/status"
     })
     .done(function(serverResponse) {
-      console.log("success")
+      console.log("success");
       console.log(serverResponse.event_status);
       if (serverResponse.event_status == "connected") {
         $(".help-status").removeAttr("id", "help-not-connected");

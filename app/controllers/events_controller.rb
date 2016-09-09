@@ -1,7 +1,8 @@
 class EventsController < ApplicationController
 
 	def index
-		@events = current_user.events
+		@events = current_user.events.limit(8)
+		@user = current_user
 	end
 
 	def new
